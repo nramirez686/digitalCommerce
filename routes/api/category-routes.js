@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
     res.status(201).json(categoryData);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Error with server" });
+    res.status(500).json(err);
   }
 });
 
@@ -43,13 +43,13 @@ router.put("/:id", async (req, res) => {
     );
 
     if (updatedCategory[0] === 0) {
-      res.status(404).json({ message: "Category not found" });
+      res.status(404).json("Category not found");
     } else {
-      res.status(200).json({ message: "Category updated" });
+      res.status(200).json("Category updated");
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Error with server" });
+    res.status(500).json("Error with server");
   }
 });
 
@@ -62,13 +62,13 @@ router.delete("/:id", async (req, res) => {
     });
 
     if (!deletedCategory) {
-      res.status(404).json({ message: "Category not found" });
+      res.status(404).json("Category not found");
     } else {
-      res.status(200).json({ message: "Category deleted" });
+      res.status(200).json("Category deleted");
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Error with server" });
+    res.status(500).json(err);
   }
 });
 
